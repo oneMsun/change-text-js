@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>修改文本框的值</title>
+		<style>
+			body,
+			p {
+				margin: 0;
+				padding: 0;
+			}
+			
+			.wrap {
+				width: 764px;
+				height: 800px;
+				margin: 0 auto;
+				display: flex;
+				background: url(bg.png) no-repeat center center;
+			}
+			
+			.text {
+				width: 442px;
+				height: 242px;
+				margin: auto;
+				background: url(bg1.png) no-repeat center center;
+				box-sizing: border-box;
+				padding-top: 76px;
+				border-radius: 3px;
+			}
+			
+			.text_i {
+				width: 100%;
+				height: 79px;
+			}
+			
+			.text .text_i:nth-of-type(1){
+				border-bottom: 1px dashed #ccc;
+			}
+			
+			.text_i .show {
+				width: 100%;
+				height: 100%;
+				position: relative;
+				padding-left: 28px;
+				box-sizing: border-box;
+				display: -none;
+			}
+			
+			.text_i .show .info {
+				float: left;
+				height: 100%;
+				font: 16px/79px "微软雅黑";
+				color: #fff;
+				margin-right: 22px;
+			}
+			
+			.text_i .show .btn {
+				float: left;
+				width: 24px;
+				height: 24px;
+				background: url(c.png) no-repeat center center;
+				margin: 29px 0 0 0;
+			}
+			
+			.text_i .alter {
+				display: none;
+				width: 100%;
+				height: 100%;
+				padding-left: 24px;
+				padding-top: 22px;
+				box-sizing: border-box;
+			}
+			
+			.text_i .alter input[type=text] {
+				display: inline-block;
+				width: 248px;
+				height: 32px;
+				border: 1px solid #e15671;
+				margin-right: 6px;
+				outline: none;
+			}
+			
+			.text_i .alter .sure,
+			.text_i .alter .cancel {
+				display: inline-block;
+				width: 60px;
+				height: 36px;
+				background: #E15671;
+				border-radius: 3px;
+				font: 14px/36px "微软雅黑";
+				text-align: center;
+				color: #fff;
+				margin-right: 6px;
+				position: relative;
+				top: 1px;
+				cursor: pointer;
+			}
+		</style>
+
+		<script type="text/javascript">
+			window.onload = function(){
+				var texts = document.querySelectorAll('.text_i');
+				for(var i=0;i<texts.length;i++ ){
+					changeText(texts[i]);
+				}
+				function changeText(obj){
+					var  btn = obj.querySelector('.btn');
+					var  show = obj.querySelector('.show');
+					var  info = obj.querySelector('.info');
+					var  alter = obj.querySelector('.alter');
+					var  input = obj.querySelector('.alter input');
+					var  sure = obj.querySelector('.sure');
+					var  cancel = obj.querySelector('.cancel');
+
+					btn.onclick = function(){
+						show.style.display = 'none';
+						alter.style.display = 'block';
+						input.value = info.innerHTML;
+					}
+					sure.onclick = function(){
+						if(input.value ==''){
+							alert('别那么吝啬，输点内容吧！');
+							return info.innerHTML;
+						}
+						info.innerHTML = input.value;
+						alter.style.display = 'none';
+						show.style.display = 'block';
+					}
+					cancel.onclick = function(){
+						alter.style.display = 'none';
+						show.style.display = 'block';
+					}
+				}
+			}
+		</script>
+	</head>
+
+	<body>
+		<div class="wrap">
+			<div class="text">
+				<div class="text_i">
+					<div class="show">
+						<p class="info">欢迎来到妙味课堂</p>
+						<a href="javascript:;" class="btn"></a>
+					</div>
+					<div class="alter">
+						<input type="text" />
+						<span class="sure">确定</span>
+						<span class="cancel">取消</span>
+					</div>
+				</div>
+				<div class="text_i">
+					<div class="show">
+						<p class="info">欢迎来到妙味课堂</p>
+						<a href="javascript:;" class="btn"></a>
+					</div>
+					<div class="alter">
+						<input type="text" />
+						<span class="sure">确定</span>
+						<span class="cancel">取消</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script>
+			
+		</script>
+	</body>
+
+</html>
